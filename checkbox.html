@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To do list app</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #153677, #4e085f);
+      padding: 10px;
+    }
+    .todo-app {
+      width: 100%;
+      max-width: 540px;
+      background: #fff;
+      margin: 100px auto 20px;
+      padding: 40px 30px 70px;
+      border-radius: 10px;
+    }
+    .todo-app h2 {
+      color:#002765;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #edeef0;
+      border-radius: 30px;
+      padding-left: 20px;
+      margin-bottom: 25px;
+    }
+    input[type="text"] {
+      flex:1;
+      border: none;
+      outline:none;
+      background: transparent;
+      padding: 10px;
+    }
+    button {
+      border:none;
+      outline: none;
+      padding: 16px 50px;
+      background: #ff5945;
+      color:#fff;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 40px;
+    }
+    ul li {
+      list-style: none;
+      font-size: 17px;
+      padding: 12px 8px;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    ul li.checked label {
+      color: #555;
+      text-decoration: line-through;
+    }
+    ul li span.delete {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      font-size: 22px;
+      color: #555;
+      line-height: 40px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    ul li span.delete:hover {
+      background: #edeef0;
+    }
+
+    /* HIDE NATIVE CHECKBOX */
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* CUSTOM BOX */
+    .custom-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #333;
+      border-radius: 4px;
+      display: inline-block;
+      margin-right: 10px;
+      position: relative;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* TICK MARK */
+    .custom-checkbox::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 1px;
+      width: 6px;
+      height: 12px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* WHEN CHECKED */
+    input[type="checkbox"]:checked + .custom-checkbox {
+      background: #28a745;
+      border-color: #28a745;
+    }
+    input[type="checkbox"]:checked + .custom-checkbox::after {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="todo-app">
+      <h2>To-Do List ✅</h2>
+      <div class="row">
+        <input type="text" id="input-box" placeholder="Add your text">
+        <button onclick="addTask()">Add</button>
+      </div>
+      <div id="task-counter">Tasks: 0</div>
+      <ul id="list-container"></ul>
+    </div>
+  </div>
+
+  <script>
+    const inputBox = document.getElementById("input-box");
+    const listContainer = document.getElementById("list-container");
+    const taskCounter = document.getElementById("task-counter");
+
+    function addTask(){
+      if(inputBox.value === ''){
+        alert("You must write something!");
+      } else {
+        let li = document.createElement("li");
+
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = "task-" + Date.now();
+
+        let customBox = document.createElement("span");
+        customBox.classList.add("custom-checkbox");
+
+        let label = document.createElement("label");
+        label.setAttribute("for", checkbox.id);
+        label.innerText = inputBox.value;
+
+        let delBtn = document.createElement("span");
+        delBtn.classList.add("delete");
+        delBtn.innerHTML = "×";
+
+        li.appendChild(checkbox);
+        li.appendChild(customBox);
+        li.appendChild(label);
+        li.appendChild(delBtn);
+
+        listContainer.appendChild(li);
+
+        // Toggle line-through when checkbox changes
+        checkbox.addEventListener("change", function(){
+          if(this.checked){
+            li.classList.add("checked");
+          } else {
+            li.classList.remove("checked");
+          }
+        });
+
+        // Delete task
+        delBtn.addEventListener("click", function(){
+          li.remove();
+          updateCounter();
+        });
+
+        updateCounter();
+      }
+      inputBox.value = "";
+    }
+
+    function updateCounter(){
+      let count = listContainer.getElementsByTagName("li").length;
+      taskCounter.innerText = "Tasks: " + count;
+    }
+  </script>
+</body>
+</html>
