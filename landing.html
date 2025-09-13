@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Split-Screen Landing Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+    }
+
+    .split {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .left {
+      background: url('https://picsum.photos/id/1015/1000/1000') no-repeat center/cover;
+    }
+
+    .right {
+      background: url('https://picsum.photos/id/1025/1000/1000') no-repeat center/cover;
+    }
+
+    .split h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    /* Hover Effects */
+    .split:hover {
+      filter: brightness(1.1);
+    }
+
+    .split:hover .btn {
+      background-color: rgba(255,255,255,0.8);
+      color: black;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      .split {
+        height: 50vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="split left">
+    <h1>Discover More</h1>
+    <a href="#learn" class="btn">Learn More</a>
+  </div>
+
+  <div class="split right">
+    <h1>Join Us Today</h1>
+    <a href="#signup" class="btn">Sign Up</a>
+  </div>
+
+  <script>
+    // Optional JS - scroll to sections (demo purpose)
+    document.querySelector(".left .btn").addEventListener("click", () => {
+      alert("Redirecting to Learn More page...");
+    });
+    document.querySelector(".right .btn").addEventListener("click", () => {
+      alert("Redirecting to Sign Up page...");
+    });
+  </script>
+</body>
+</html>
