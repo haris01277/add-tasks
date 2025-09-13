@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Accordion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      padding: 50px;
+    }
+    .accordion {
+      max-width: 600px;
+      margin: auto;
+    }
+    .accordion-item {
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      overflow: hidden;
+    }
+    .accordion-item label {
+      display: block;
+      padding: 15px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+    }
+    .accordion-item label::after {
+      content: '+';
+      position: absolute;
+      right: 20px;
+      font-size: 20px;
+      transition: transform 0.3s;
+    }
+    input[type="checkbox"] {
+      display: none;
+    }
+    .accordion-item .answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      color: #333;
+      line-height: 1.5;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+    }
+    input[type="checkbox"]:checked ~ .answer {
+      max-height: 200px;
+      padding: 15px 20px;
+    }
+    input[type="checkbox"]:checked + label::after {
+      content: '–';
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="accordion">
+    <!-- Q1 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q1">
+      <label for="q1">What is HTML?</label>
+      <div class="answer">HTML stands for HyperText Markup Language. It is the standard language for creating web pages.</div>
+    </div>
+    <!-- Q2 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q2">
+      <label for="q2">What is CSS?</label>
+      <div class="answer">CSS stands for Cascading Style Sheets. It is used to style and layout HTML elements on a page.</div>
+    </div>
+    <!-- Q3 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q3">
+      <label for="q3">What is JavaScript?</label>
+      <div class="answer">JavaScript is a programming language that adds interactivity and dynamic behavior to websites.</div>
+    </div>
+    <!-- Q4 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q4">
+      <label for="q4">What is Responsive Design?</label>
+      <div class="answer">Responsive design ensures web pages look good on all devices by using flexible layouts and media queries.</div>
+    </div>
+    <!-- Q5 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q5">
+      <label for="q5">What is a Domain Name?</label>
+      <div class="answer">A domain name is the web address people type into their browser to visit your website.</div>
+    </div>
+    <!-- Q6 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q6">
+      <label for="q6">What is Hosting?</label>
+      <div class="answer">Hosting is a service that stores your website files and makes them accessible on the internet.</div>
+    </div>
+    <!-- Q7 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q7">
+      <label for="q7">What is SEO?</label>
+      <div class="answer">SEO stands for Search Engine Optimization. It is the practice of improving your website to rank higher in search results.</div>
+    </div>
+    <!-- Q8 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q8">
+      <label for="q8">What are Meta Tags?</label>
+      <div class="answer">Meta tags are snippets of text in your HTML that provide information about your page for search engines.</div>
+    </div>
+    <!-- Q9 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q9">
+      <label for="q9">What is a CMS?</label>
+      <div class="answer">CMS stands for Content Management System. It allows users to manage website content without coding.</div>
+    </div>
+    <!-- Q10 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q10">
+      <label for="q10">What is Bootstrap?</label>
+      <div class="answer">Bootstrap is a front-end framework for developing responsive and mobile-first websites quickly.</div>
+    </div>
+    <!-- Q11 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q11">
+      <label for="q11">What is Flexbox?</label>
+      <div class="answer">Flexbox is a CSS layout mode designed to distribute space and align items within a container.</div>
+    </div>
+    <!-- Q12 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q12">
+      <label for="q12">What is CSS Grid?</label>
+      <div class="answer">CSS Grid is a two-dimensional layout system for arranging elements in rows and columns.</div>
+    </div>
+    <!-- Q13 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q13">
+      <label for="q13">What is an API?</label>
+      <div class="answer">API stands for Application Programming Interface. It allows different software applications to communicate.</div>
+    </div>
+    <!-- Q14 -->
+    <div class="accordion-item">
+      <input type="checkbox" id="q14">
+      <label for="q14">What is a Framework?</label>
+      <div class="answer">A framework is a set of tools and libraries that helps developers build software more efficiently.</div>
+    </div>
+  </div>
+</body>
+</html>
